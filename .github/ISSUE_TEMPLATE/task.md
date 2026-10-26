@@ -1,5 +1,5 @@
 ---
-name: 작업
+name: 작업 요청
 about: 하나의 작업 단위 (이 이슈로 브랜치와 PR을 만듭니다)
 title: "[작업] "
 labels: ""
