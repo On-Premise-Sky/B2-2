@@ -1,7 +1,7 @@
 # 제출물 인덱스
 
-- **저장소**: https://github.com/sw0410/B2-2
-- **결과물 유형**: TBD (A 유틸 함수 / B 팀 소개 / C 학습 노트)
+- **저장소**: https://github.com/On-Premise-Sky/B2-2
+- **결과물 유형**: 
 
 ## 팀원별 기여
 
