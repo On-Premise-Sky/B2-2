@@ -8,5 +8,5 @@
 각자 본인 사이트 PR에서 위 표 맨 아래에 자기 행을 추가합니다.
 
 ```
-| 홍길동 | [@hong](https://github.com/hong) | 한 줄 소개 | [hong](hong/) |
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 비즈니스 가치를 만드는 AX 컨설턴트 | [개인 사이트](https://ktheodoreyw.github.io/Codyssey_B1-1_Theodore/) |
 ```
