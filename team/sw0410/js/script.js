@@ -30,7 +30,7 @@
   });
 
 // 3. 상태와 화면: STATE가 유일한 기준이고, render()가 STATE를 보고 화면(data-theme 속성, active·show 클래스, 목록, 문구)을 만든다.
-  const STATE = { theme: "light", menuOpen: false, repoStatus: "loading", repos: [], emailError: "", scrollY: 0, nameError: "", messageError: "", formSuccess: false, posts: [], skill: ""};
+  const STATE = { theme: "light", menuOpen: false, repoStatus: "loading", repos: [], emailError: "", scrollY: 0, nameError: "", messageError: "", formSuccess: false, skill: ""};
   function render() {
 // STATE.theme 값("light" 또는 "dark")을 html의 data-theme 속성에 그대로 적는다.
     document.documentElement.setAttribute("data-theme", STATE.theme);
@@ -76,16 +76,6 @@
     items.forEach(function (li) {
       document.querySelector("#repo-list").append(li);
     });
-    
-    // 블로그 글 목록: 파일 이름 → 제목 (.md 빼고, - 를 띄어쓰기로)
-    const postList = document.querySelector("#post-list");
-    postList.textContent = "";      // 상자 비우기
-    STATE.posts.forEach(({ name, html_url }) => {
-      const title = name.replace(".md", "").replaceAll("-", " ");
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="posts/${name.replace(".md", ".html")}">${title}</a>`;      postList.append(li);
-    });
-
 
     const emailMsg = document.querySelector("#email-error");
     if (STATE.emailError === "format") {
@@ -160,18 +150,6 @@ retryBtn.addEventListener("click", () => {
   loadRepos();
 });
 
-// 6-1. 블로그 글 목록 불러오기: posts 폴더의 파일 목록 → STATE.posts
-async function loadPosts() {
-  try {
-    const res = await fetch("https://api.github.com/repos/sw0410/website-project/contents/posts");
-    if (!res.ok) throw new Error(`요청 실패: ${res.status}`);
-    STATE.posts = await res.json();
-  } catch (error) {
-    STATE.posts = [];
-  }
-  render();
-}
-loadPosts();
 
 // 7. 문의 폼: 제출 → 검사 → 오류 문구
 const form = document.querySelector("#contact-form");
