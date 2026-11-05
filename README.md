@@ -9,7 +9,7 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 |  | @ | |
 |  | @ | |
 |  | @ | |
-|  | @ | |
+| 안시우 | [@SIUUU1](https://github.com/SIUUU1) | team/README.md, CODEOWNERS, Git 히스토리 증빙 |
 
 ## 브랜치 전략: GitHub Flow
 
