@@ -4,11 +4,11 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 
 ## 팀원
 
-| 이름 | GitHub | 담당 |
+| 이름 | 깃허브 주소 | 역할 |
 | --- | --- | --- |
-|  | @ | |
-|  | @ | |
-|  | @ | |
+| 이승우 | [@sw0410](https://github.com/sw0410) | 저장소·보호 규칙 관리, Pages 배포 |
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md |
+| 김나현 | [@yhana972](https://github.com/yhana972) | 팀 랜딩 페이지 제작·최종 점검 |
 | 안시우 | [@SIUUU1](https://github.com/SIUUU1) | team/README.md, CODEOWNERS, Git 히스토리 증빙 |
 
 ## 브랜치 전략: GitHub Flow

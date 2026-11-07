@@ -16,4 +16,4 @@ assignees: ""
 
 ## 브랜치
 
-`feature/<이슈번호>-<설명>`
+`<type>/<id>-<작업>`
