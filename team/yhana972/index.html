@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="웹과 XR을 포함한 6년의 클라이언트 개발 경험을 바탕으로 Web, App, AI 서비스 영역으로 확장하고 있는 김나현의 개발자 포트폴리오입니다."
+    >
+
+    <meta
+        name="author"
+        content="NaHyeon Kim"
+    >
+
+    <title>NaHyeon Kim | Client Developer Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==================================================
+         Pool Lane Background
+
+         장식 목적의 요소이므로
+         스크린리더가 읽지 않도록 aria-hidden 적용
+    =================================================== -->
+    <div
+        class="pool-background"
+        aria-hidden="true"
+    >
+        <div class="lane-track">
+            <span class="lane-line"></span>
+            <span class="lane-line"></span>
+            <span class="lane-line"></span>
+            <span class="lane-line"></span>
+        </div>
+    </div>
+
+
+    <!--
+        장식용 Pointer Effect.
+        정보 전달 목적이 없으므로 aria-hidden 적용.
+
+        Light Mode → 물결 / 수면 반사
+        Dark Mode  → 조명 / 윤슬
+    -->
+    <div
+        class="pointer-effect"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- ==================================================
+         Header Landmark
+
+         사이트의 전역 Navigation을 포함하는 영역
+    =================================================== -->
+    <header class="site-header">
+
+        <nav
+            class="site-nav"
+            aria-label="메인 내비게이션"
+        >
+
+            <a
+                href="#hero"
+                class="logo"
+            >
+                <span
+                    class="logo-dot"
+                    aria-hidden="true"
+                ></span>
+
+                NAHYEON // DEV.POOL
+            </a>
+
+
+            <ul
+                class="nav-list"
+                id="nav-menu"
+            >
+                <li>
+                    <a href="#about">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#skills">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#contact">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+
+            <div class="nav-actions">
+
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="다크 모드로 변경"
+                >
+                    ☾
+                </button>
+
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="메뉴 열기"
+                    aria-expanded="false"
+                    aria-controls="nav-menu"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================================================
+         Main Landmark
+
+         포트폴리오의 핵심 콘텐츠를 포함한다.
+
+         각 Section은 aria-labelledby를 사용해
+         Section 제목과 Landmark를 연결한다.
+    =================================================== -->
+    <main id="main-content">
+
+
+        <!-- ==================================================
+             Hero
+        =================================================== -->
+        <section
+            class="hero"
+            id="hero"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="hero-content">
+
+                <p class="hero-eyebrow">
+                    OPEN WATER / CLIENT DEVELOPER
+                </p>
+
+
+                <h1 id="hero-title">
+
+                    <span class="hero-static-line">
+                        경험을 연결하고,
+                    </span>
+
+                    <br>
+
+
+                    <span
+                        class="hero-typing-line"
+                        aria-hidden="true"
+                    >
+                        <span
+                            id="typing-text"
+                            data-text="서비스의 흐름을 설계합니다."
+                        ></span>
+
+                        <span
+                            class="typing-cursor"
+                            aria-hidden="true"
+                        >
+                            |
+                        </span>
+                    </span>
+
+
+                    <span class="sr-only">
+                        서비스의 흐름을 설계합니다.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+                    웹과 XR을 포함한 6년의 클라이언트 개발 경험을 바탕으로,
+                    사용자와 기술이 자연스럽게 연결되는 서비스를 만듭니다.
+                    현재는 Web, App, AI 영역까지 개발 범위를 확장하고 있습니다.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#projects">
+                        프로젝트 보기
+                    </a>
+
+                    <a href="#contact">
+                        연락하기
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             About
+        =================================================== -->
+        <section
+            class="section about"
+            id="about"
+            aria-labelledby="about-title"
+        >
+
+            <header
+                class="section-header"
+                data-reveal
+            >
+
+                <p class="section-label">
+                    SECTION 01 / ABOUT
+                </p>
+
+
+                <h2 id="about-title">
+                    Poolside Introduction
+                </h2>
+
+
+                <p>
+                    클라이언트 개발에서 시작해 더 넓은 서비스 개발로
+                </p>
+
+            </header>
+
+
+            <div
+                class="about-content"
+                data-reveal
+            >
+
+                <figure class="profile">
+
+                    <img
+                        src="images/profile.jpeg"
+                        alt="김나현 프로필 사진"
+                    >
+
+                </figure>
+
+
+                <div class="about-text">
+
+                    <p>
+                        약 6년간 웹과 XR을 비롯한 클라이언트 개발을 경험했습니다.
+                        Unity와 C#을 활용한 XR 콘텐츠부터 Android와 Web 환경까지,
+                        다양한 플랫폼에서 사용자가 직접 마주하는 화면과 기능을 개발해왔습니다.
+                    </p>
+
+
+                    <p>
+                        현재는 기존 클라이언트 개발 경험을 기반으로
+                        React와 Flutter 같은 Web/App 기술뿐 아니라
+                        Python, FastAPI, AI API를 활용한 서비스 개발까지
+                        영역을 확장하고 있습니다.
+                    </p>
+
+
+                    <p>
+                        특정 플랫폼에 한정되기보다
+                        사용자 경험과 서비스의 전체 흐름을 이해하고,
+                        필요한 기술을 연결해 실제 동작하는 결과물을 만드는 개발자를 지향합니다.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             Skills
+        =================================================== -->
+        <section
+            class="section skills"
+            id="skills"
+            aria-labelledby="skills-title"
+        >
+
+            <header
+                class="section-header"
+                data-reveal
+            >
+
+                <p class="section-label">
+                    SECTION 02 / SKILLS
+                </p>
+
+
+                <h2 id="skills-title">
+                    Structured Lanes
+                </h2>
+
+
+                <p>
+                    서로 다른 레인에서 쌓아온 개발 경험
+                </p>
+
+            </header>
+
+
+            <div class="skills-grid">
+
+                <!-- LANE 01 -->
+                <article
+                    class="skill-card"
+                    data-reveal
+                >
+
+                    <header class="skill-card-header">
+
+                        <span class="lane-number">
+                            LANE 01
+                        </span>
+
+                        <span class="lane-category">
+                            CLIENT / XR
+                        </span>
+
+                    </header>
+
+
+                    <div
+                        class="skill-icon"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="30"
+                            height="30"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M3 8.5C3 7.12 4.12 6 5.5 6h13C19.88 6 21 7.12 21 8.5v5c0 1.38-1.12 2.5-2.5 2.5h-3.2l-1.4-2h-3.8l-1.4 2H5.5A2.5 2.5 0 0 1 3 13.5v-5Z"
+                            />
+
+                            <path d="M8 10v2" />
+                            <path d="M7 11h2" />
+
+                            <circle
+                                cx="16.5"
+                                cy="10"
+                                r=".7"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+
+                            <circle
+                                cx="18.5"
+                                cy="12"
+                                r=".7"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+                        </svg>
+                    </div>
+
+
+                    <h3>
+                        Client Experience
+                    </h3>
+
+
+                    <p>
+                        가장 오래 경험한 영역으로,
+                        다양한 디바이스와 플랫폼에서 사용자가 직접 상호작용하는
+                        클라이언트 기능을 개발해왔습니다.
+                    </p>
+
+
+                    <ul class="skill-list">
+                        <li>Unity</li>
+                        <li>C#</li>
+                        <li>AR / VR / XR</li>
+                        <li>Android</li>
+                    </ul>
+
+                </article>
+
+
+                <!-- LANE 02 -->
+                <article
+                    class="skill-card"
+                    data-reveal
+                >
+
+                    <header class="skill-card-header">
+
+                        <span class="lane-number">
+                            LANE 02
+                        </span>
+
+                        <span class="lane-category">
+                            WEB / APP
+                        </span>
+
+                    </header>
+
+
+                    <div
+                        class="skill-icon"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="30"
+                            height="30"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="16"
+                                rx="2"
+                            />
+
+                            <path d="M3 8h18" />
+
+                            <circle
+                                cx="6"
+                                cy="6"
+                                r=".6"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+
+                            <circle
+                                cx="8.5"
+                                cy="6"
+                                r=".6"
+                                fill="currentColor"
+                                stroke="none"
+                            />
+
+                            <path d="M7 12h4" />
+                            <path d="M7 15h7" />
+                        </svg>
+                    </div>
+
+
+                    <h3>
+                        Interface Flow
+                    </h3>
+
+
+                    <p>
+                        클라이언트 개발 경험을 Web과 App 환경으로 확장하며,
+                        반응형 UI와 사용자 인터랙션을 구현하고 있습니다.
+                    </p>
+
+
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Flutter</li>
+                    </ul>
+
+                </article>
+
+
+                <!-- LANE 03 -->
+                <article
+                    class="skill-card"
+                    data-reveal
+                >
+
+                    <header class="skill-card-header">
+
+                        <span class="lane-number">
+                            LANE 03
+                        </span>
+
+                        <span class="lane-category">
+                            SERVICE / AI
+                        </span>
+
+                    </header>
+
+
+                    <div
+                        class="skill-icon"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="30"
+                            height="30"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
+                            />
+
+                            <circle
+                                cx="5"
+                                cy="6"
+                                r="2"
+                            />
+
+                            <circle
+                                cx="19"
+                                cy="6"
+                                r="2"
+                            />
+
+                            <circle
+                                cx="5"
+                                cy="18"
+                                r="2"
+                            />
+
+                            <circle
+                                cx="19"
+                                cy="18"
+                                r="2"
+                            />
+
+                            <path d="M7 7.5 9.5 10" />
+                            <path d="m17 7.5-2.5 2.5" />
+                            <path d="m7 16.5 2.5-2.5" />
+                            <path d="m17 16.5-2.5-2.5" />
+                        </svg>
+                    </div>
+
+
+                    <h3>
+                        Connected Flow
+                    </h3>
+
+
+                    <p>
+                        최근 프로젝트를 통해 화면 구현을 넘어
+                        API, 데이터베이스, AI 기능까지 연결하는
+                        서비스 개발 경험을 확장하고 있습니다.
+                    </p>
+
+
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>FastAPI</li>
+                        <li>PostgreSQL</li>
+                        <li>AI / LLM API</li>
+                        <li>Docker</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             Projects
+        =================================================== -->
+        <section
+            class="section projects"
+            id="projects"
+            aria-labelledby="projects-title"
+        >
+
+            <header
+                class="section-header"
+                data-reveal
+            >
+
+                <p class="section-label">
+                    SECTION 03 / PROJECTS
+                </p>
+
+
+                <h2 id="projects-title">
+                    Deep Dive
+                </h2>
+
+
+                <p>
+                    직접 설계하고 구현하며 깊이 탐구해온 개발 프로젝트
+                </p>
+
+            </header>
+
+
+            <div
+                class="project-filters"
+                id="project-filters"
+                role="group"
+                aria-label="프로젝트 언어 필터"
+                hidden
+            ></div>
+
+
+            <div
+                class="projects-grid"
+                id="projects-list"
+                aria-live="polite"
+                data-reveal
+            >
+
+                <p class="projects-status">
+                    프로젝트를 불러오는 중...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             Contact
+
+             HTML의 minlength / maxlength와
+             JavaScript Custom Validation의 기준을 동일하게 유지한다.
+        =================================================== -->
+        <section
+            class="section contact"
+            id="contact"
+            aria-labelledby="contact-title"
+        >
+
+            <header
+                class="section-header"
+                data-reveal
+            >
+
+                <p class="section-label">
+                    SECTION 04 / CONTACT
+                </p>
+
+
+                <h2 id="contact-title">
+                    Stay in the Flow
+                </h2>
+
+
+                <p>
+                    새로운 서비스와 기술을 함께 고민할 기회를 기다리고 있습니다.
+                </p>
+
+            </header>
+
+
+            <form
+                class="contact-form"
+                id="contact-form"
+                action="https://formspree.io/f/maenyqke"
+                method="POST"
+                novalidate
+                data-reveal
+            >
+
+                <div class="form-field">
+
+                    <label for="name">
+                        이름
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        minlength="2"
+                        maxlength="30"
+                        aria-describedby="name-error"
+                        required
+                    >
+
+
+                    <p
+                        class="error-message"
+                        id="name-error"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="email">
+                        이메일
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="email"
+                        maxlength="100"
+                        aria-describedby="email-error"
+                        required
+                    >
+
+
+                    <p
+                        class="error-message"
+                        id="email-error"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="message">
+                        메시지
+                    </label>
+
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        minlength="10"
+                        maxlength="1000"
+                        aria-describedby="message-error"
+                        required
+                    ></textarea>
+
+
+                    <p
+                        class="error-message"
+                        id="message-error"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+                    <span class="submit-label">
+                        Send Message
+                    </span>
+                </button>
+
+
+                <p
+                    class="form-status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         Scroll Top
+    =================================================== -->
+    <button
+        class="scroll-top"
+        type="button"
+        aria-label="페이지 맨 위로 이동"
+    >
+        ↑
+    </button>
+
+
+    <!-- ==================================================
+         Footer
+    =================================================== -->
+    <footer
+        class="site-footer"
+        aria-label="사이트 정보"
+    >
+
+        <p>
+            &copy; 2026 NaHyeon Kim.
+            All rights reserved.
+        </p>
+
+
+        <nav
+            class="social-links"
+            aria-label="소셜 링크"
+        >
+
+            <a
+                href="https://github.com/yhana972"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+        </nav>
+
+    </footer>
+
+
+    <script
+        src="js/main.js"
+        defer
+    ></script>
+
+</body>
+</html>

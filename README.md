@@ -10,6 +10,7 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 | 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md |
 |  | @ | |
 |  | @ | |
+| 김나현 | [@yhana972](https://github.com/yhana972) | 팀 랜딩 페이지 제작·최종 점검|
 
 ## 브랜치 전략: GitHub Flow
 
