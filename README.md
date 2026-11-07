@@ -6,7 +6,7 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 
 | 이름 | GitHub | 담당 |
 | --- | --- | --- |
-|  | @ | |
+| 이승우 | [@sw0410](https://github.com/sw0410) | 저장소·보호 규칙 관리, Pages 배포 |
 | 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md |
 |  | @ | |
 |  | @ | |
