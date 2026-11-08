@@ -44,7 +44,7 @@ const render = (members) => {
   document.getElementById('member-count').textContent = `팀원 ${members.length}명`;
 };
 
-// fetch는 file:// 로 열면 브라우저가 막는다. 그 경우 안내 문구를 보여 준다.
+// JSON을 읽어 카드를 그린다. 실패하면 목록 자리에 안내 문구를 보여 준다.
 const loadMembers = async () => {
   try {
     const response = await fetch(MEMBERS_URL);
@@ -54,8 +54,12 @@ const loadMembers = async () => {
     const { members } = await response.json();
     render(members);
   } catch (error) {
+    // file:// 로 열면 브라우저가 fetch를 막는다. 그때만 로컬 서버 안내를 덧붙인다.
+    const guide = location.protocol === 'file:'
+      ? ' Live Server 등 로컬 서버로 열어 주세요.'
+      : '';
     document.getElementById('member-list').append(
-      createText('li', 'noscript', '팀원 목록을 불러오지 못했습니다. Live Server 등 로컬 서버로 열어 주세요.'),
+      createText('li', 'noscript', `팀원 목록을 불러오지 못했습니다.${guide}`),
     );
     console.error('[members] 불러오기 실패:', error);
   }
