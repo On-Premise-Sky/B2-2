@@ -94,17 +94,28 @@ git log -3 --oneline
 - **주의점**: 아직 push하지 않은 로컬 커밋에서 실습했습니다. 이미 공유한 커밋을 취소할 때는 `git revert`를 사용합니다.
 - **파일 구조 변경 안내**: 이 기록의 `src/js/members.js`는 실습 당시 경로입니다. `src/data/members.json`과 `src/js/render.js`로 나누는 후속 변경 내용은 [PR #27](https://github.com/On-Premise-Sky/B2-2/pull/27)을 참고합니다.
 
-## 시나리오 3. `git revert`
-
-- **작성자 / 역할**:
-- **상황**:
-- **절차**:
+- **작성자 / 역할**: 이승우 / 저장소·보호 규칙 관리, 실습
+- **상황**: 의도적 실수 PR([#24](https://github.com/On-Premise-Sky/B2-2/pull/24))로 README.md에 임시 메모를 추가해 main에 머지했습니다(`5f9df75`, 머지 커밋 `c558951`). 이미 main에 push된 커밋이라 `reset`으로 지우면 다른 팀원의 히스토리와 어긋나므로, 되돌리는 커밋을 새로 만드는 `revert`를 사용했습니다.
+- **절차**: 최신 main에서 브랜치를 만들고, 머지 커밋이 아닌 실수 커밋 `5f9df75`를 되돌렸습니다. 머지 커밋은 부모가 둘이라 `-m` 옵션이 필요하지만, 실수 커밋은 부모가 하나이고 PR의 변경이 이 커밋뿐이라 결과가 같습니다. revert의 기본 메시지(`Revert "docs: README에 임시 메모 추가"`)는 커밋 컨벤션(`type: 설명`)에 맞지 않으므로(#24 리뷰 의견), `--no-commit`으로 되돌리기만 한 뒤 컨벤션에 맞춰 메시지를 직접 썼습니다. 되돌린 커밋은 본문에 적어 추적할 수 있게 했습니다.
 
 ```bash
+git switch main
+git pull origin main
+git switch -c fix/sw0410-revert-temp-note
+git revert --no-commit 5f9df75
+git diff --cached          # README의 메모 두 줄만 삭제되는지 확인
+git commit -m "fix: README 임시 메모 되돌리기" -m "되돌린 커밋: 5f9df75 (docs: README에 임시 메모 추가, PR #24)"
+git log --oneline -2
 ```
 
-- **결과**:
-- **주의점**: main은 보호되어 있으므로 revert도 브랜치 → PR로 반영합니다.
+- **결과**: 실수 커밋은 히스토리에 그대로 남고, 그 변경을 지우는 커밋 `<431aadb>`가 새로 추가되었습니다. README.md는 #24 이전 상태로 돌아갔습니다.
+
+  ```text
+  <431aadb> (HEAD -> fix/sw0410-revert-temp-note) fix: README 임시 메모 되돌리기
+  c558951 (origin/main, origin/HEAD, main) Merge pull request #24 from On-Premise-Sky/docs/sw0410-temp-note
+  ```
+
+- **주의점**: main은 보호되어 있으므로 revert도 브랜치 → PR로 반영합니다. `revert`는 push된 커밋에, `reset`은 push 전 로컬 커밋에만 씁니다. revert 커밋도 팀 컨벤션(`type: 설명`)을 따르고, 되돌린 커밋 번호는 본문에 남깁니다.
 
 ## 시나리오 4. `git stash` / `git stash pop`
 
