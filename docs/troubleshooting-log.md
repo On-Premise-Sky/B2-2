@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | 1. 최근 커밋 메시지 수정 | `git commit --amend` | | 미완료 |
 | 2. 로컬 커밋 취소, 변경 유지 | `git reset --soft HEAD~1` | 김나현 | 완료 |
-| 3. push된 커밋 되돌리기 | `git revert <커밋>` | | 미완료 |
+| 3. push된 커밋 되돌리기 | `git revert <커밋>` | 이승우 | 완료 |
 | 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | 안시우 | 완료 |
 
 ## 언제 무엇을 쓰나 (요약)
