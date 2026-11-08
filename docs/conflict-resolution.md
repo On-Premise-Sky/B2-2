@@ -10,6 +10,7 @@
 | 1 | 2026-11-07 | 같은 위치에 팀원 행 추가 | [#14](https://github.com/On-Premise-Sky/B2-2/pull/14), [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) | 김나현 | 예 |
 | 2 | 2026-11-07 | 같은 hunk의 팀원 표 행 추가 + 빈 행·머리글 정리 | [#15](https://github.com/On-Premise-Sky/B2-2/pull/15) | 안시우 | 예 |
 | 3 | 2026-11-07 | 같은 hunk의 팀원 표 행 추가 (2개 파일) | [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) | 김영운 | 예 |
+| 4 | 2026-11-08 | 파일 삭제·분리 vs 같은 파일 내용 수정 (modify/delete) | [#34](https://github.com/On-Premise-Sky/B2-2/pull/34) (main 쪽: [#27](https://github.com/On-Premise-Sky/B2-2/pull/27)) | 이승우 | 예 |
 
 ---
 
@@ -375,3 +376,107 @@ git merge --abort
 - 충돌 마커의 HEAD는 "지금 내가 있는 브랜치"입니다. main에서 머지하면 HEAD가 main, PR 브랜치에서 머지하면 HEAD가 내 브랜치가 되어 위아래가 반대로 나오므로, 기록할 때 어느 쪽에서 머지했는지 함께 적어야 합니다.
 - 충돌 출력은 저장소 밖에 저장해야 기록용 파일이 실수로 커밋되지 않습니다.
 - main을 직접 수정하지 않고 PR 브랜치에서 main을 받아 해결한 뒤 push하면, 해결 과정이 PR 안에서 리뷰되고 Branch Protection 규칙도 지킬 수 있습니다.
+
+---
+
+### 충돌 #4: members.js 삭제·분리와 같은 파일 수정의 modify/delete 충돌
+
+- **날짜**: 2026-11-08
+- **관련 브랜치 / PR**: `feature/sw0410-member-github` ↔ `origin/main` / [#34](https://github.com/On-Premise-Sky/B2-2/pull/34) (main 쪽 변경: [#27](https://github.com/On-Premise-Sky/B2-2/pull/27))
+- **참여자**: 작성자 이승우, main 쪽 변경 안시우, 리뷰어 안시우
+- **유형**: 파일 삭제·이동 vs 내용 수정 (modify/delete)
+
+#### 1. 상황 (어떻게 충돌이 생겼나)
+
+계획표 5번(충돌 2 수정 측)입니다. 랜딩 PR #22와 CODEOWNERS PR #20이 머지된 같은 커밋 `1b520eb`에서 저와 안시우님이 함께 분기했습니다.
+
+- 안시우님(#27): `src/js/members.js`를 **삭제**하고, 데이터는 `src/data/members.json`, 카드 렌더링은 `src/js/render.js`로 분리했습니다.
+- 저(#34): 같은 `src/js/members.js`에서 팀원 데이터에 `github` 필드를 추가하고, `createCard`에서 `@아이디`를 GitHub 프로필 링크로 바꿨습니다(`8869a8d`).
+
+#27이 먼저 머지된 뒤 제 브랜치로 main을 받아오자, "main은 지운 파일을 나는 고쳤다"는 modify/delete 충돌이 났습니다. 같은 줄을 다르게 고친 내용 충돌과 달리 충돌 마커가 없고, 파일을 남길지 지울지를 사람이 정해야 합니다.
+
+- 병합 전 HEAD: `8869a8d5fa83c9f4cdadde8fa7f6c1da250e7e64`
+- 가져온 main: `d0819487c829ea0104771cd3d0c937de79b6616c`
+
+#### 2. 재현 절차
+
+```bash
+git switch feature/sw0410-member-github
+git fetch origin
+git merge origin/main
+git status
+```
+
+```text
+CONFLICT (modify/delete): src/js/members.js deleted in origin/main and modified in HEAD.  Version HEAD of src/js/members.js left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+같은 충돌을 다시 만들려면 작업을 모두 커밋한 상태에서 아래 고정 커밋을 씁니다. 커밋 번호로 머지하므로 메시지의 `origin/main` 자리에 커밋 번호가 표시됩니다.
+
+```bash
+git switch -c practice/sw0410-conflict-replay 8869a8d5fa83c9f4cdadde8fa7f6c1da250e7e64
+git merge --no-commit d0819487c829ea0104771cd3d0c937de79b6616c
+# 충돌 상태를 확인한 뒤 재현 실습을 종료
+git merge --abort
+```
+
+#### 3. 충돌 내용
+
+마커 대신 `git status`에 미해결 파일로 표시됐습니다. them은 받아온 main, HEAD는 제 브랜치입니다. Git은 판단을 미루고 제 버전의 `members.js`를 작업 트리에 남겨 두었습니다.
+
+```text
+Changes to be committed:
+        modified:   docs/troubleshooting-log.md
+        new file:   src/data/members.json
+        modified:   src/index.html
+        new file:   src/js/render.js
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+        deleted by them: src/js/members.js
+```
+
+#### 4. 해결 방법과 이유
+
+파일을 분리한 main의 구조가 이후 기준이므로 **삭제는 그대로 따르고**, 제 변경만 새 위치로 옮겼습니다. `git add src/js/members.js`로 파일을 되살리면 사용하지 않는 옛 파일이 다시 생기고 데이터가 두 곳에 나뉘므로 선택하지 않았습니다.
+
+- 데이터: 4명 모두 `"hasSite": true` 위에 `"github": "https://github.com/<id>",` 추가 → `src/data/members.json`. JSON은 마지막 항목 뒤 쉼표를 허용하지 않으므로 `hasSite` 앞에 넣어 기존 줄을 건드리지 않았습니다.
+- 렌더링: `createCard`의 `@아이디`를 `<a>`로 만들고 `href`, `target="_blank"`, `rel="noopener"` 지정 → `src/js/render.js`
+- `git rm src/js/members.js`로 삭제를 확정하고, 두 파일을 `git add`했습니다.
+
+`src/data/members.json` (한 명 예시)
+
+```json
+{
+  "id": "sw0410",
+  "name": "이승우",
+  "role": "저장소·보호 규칙 관리, Pages 배포",
+  "intro": "동료와 함께 자라는 개발자",
+  "github": "https://github.com/sw0410",
+  "hasSite": true
+}
+```
+
+`src/js/render.js`의 `createCard` 안
+
+```js
+const handle = createText('a', 'member-handle', `@${id}`);
+handle.href = github;
+handle.target = '_blank';
+handle.rel = 'noopener';
+```
+
+#### 5. 결과
+
+- 해결 커밋: `56c2efd`
+- `git status`에서 `All conflicts fixed but you are still merging.` 확인 후 커밋했습니다.
+- `members.json`이 `fetch`로 읽히므로 `python -m http.server`로 `src/`를 열어 카드 4개 표시, `@아이디` 클릭 시 각자 GitHub 프로필이 새 탭으로 열리는 것을 확인했습니다.
+- 리뷰 반영(`e4b6497`): `<p>`가 `<a>`로 바뀌며 `.member-link`에만 있던 hover·focus-visible 스타일을 `.member-handle`에도 적용했고, 외곽선이 카드 폭 전체로 늘어나지 않게 `align-self: flex-start`를 넣었습니다.
+
+#### 6. 주의점 / 배운 점
+
+- modify/delete 충돌은 마커가 없어 파일을 열어도 표시가 안 보입니다. `git status`의 `deleted by them / deleted by us`로 파악해야 합니다.
+- 해결은 "파일을 남길지 지울지"를 고르는 것으로 끝나지 않습니다. 삭제된 파일의 내용이 어디로 옮겨졌는지 상대 PR에서 확인하고, 내 변경을 그 위치에 다시 적용해야 의도가 사라지지 않습니다.
+- 이 충돌은 상대가 머지하기 **전에** 같은 커밋에서 분기해야 생깁니다. 분기 직후 채널에 알려 순서를 맞췄습니다.
+- 공유 기록 파일의 붙은 줄(요약표 다음 행, 파일 끝)은 앞 기록(#30)이 머지된 뒤 최신 main 위에서 써야 기록끼리 다시 충돌하지 않습니다.
