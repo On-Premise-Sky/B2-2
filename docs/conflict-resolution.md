@@ -264,7 +264,7 @@ git merge --abort
 
 - **날짜**: 2026-11-07
 - **관련 브랜치 / PR**: `feature/ktheodoreyw-site` ↔ `origin/main` / [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) (main 쪽 변경: [#16](https://github.com/On-Premise-Sky/B2-2/pull/16))
-- **참여자**: 작성자 김영운, main 쪽 변경 이승우, 리뷰어 <리뷰어 이름>
+- **참여자**: 작성자 김영운, main 쪽 변경 이승우, 리뷰어 김나현(승인)·이승우(사후 리뷰)
 - **유형**: 같은 hunk 수정 (2개 파일: 인접한 빈 행을 서로 다른 팀원 행으로 교체 + 표 맨 아래에 서로 다른 행 추가)
 
 #### 1. 상황 (어떻게 충돌이 생겼나)
