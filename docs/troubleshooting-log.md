@@ -92,7 +92,7 @@ git log -3 --oneline
   c5c3872 (origin/main, origin/HEAD) Merge pull request #16 from On-Premise-Sky/feature/sw0410-site
   ```
 - **주의점**: 아직 push하지 않은 로컬 커밋에서 실습했습니다. 이미 공유한 커밋을 취소할 때는 `git revert`를 사용합니다.
-- **파일 구조 변경 안내**: `src/js/members.js`는 실습 당시의 파일입니다. 후속 [PR #27](https://github.com/On-Premise-Sky/B2-2/pull/27)에서 `src/data/members.json`과 `src/js/render.js`로 분리할 예정이므로, 병합 이후에는 변경된 경로를 참고합니다.
+- **파일 구조 변경 안내**: 이 기록의 `src/js/members.js`는 실습 당시 경로입니다. `src/data/members.json`과 `src/js/render.js`로 나누는 후속 변경 내용은 [PR #27](https://github.com/On-Premise-Sky/B2-2/pull/27)을 참고합니다.
 
 ## 시나리오 3. `git revert`
 
