@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- index.html: 페이지 구조. 모양은 style.css, 팀원 데이터와 카드 렌더링은 members.js가 맡는다. -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Premise-Sky 팀 소개</title>
+  <meta name="description" content="각자의 포트폴리오를 한곳에 모으고, GitHub에서 함께 리뷰하며 협업 과정을 기록합니다.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/members.js" defer></script>
+</head>
+<body>
+
+  <!-- 상단 줄: 저장소 경로와 팀원 수 -->
+  <div class="top-bar">
+    <span>On-Premise-Sky / B2-2</span>
+    <span id="member-count"></span>
+  </div>
+
+  <main class="workspace">
+    <!-- 팀 소개: 넓은 화면에서는 왼쪽 패널, 좁은 화면에서는 위쪽에 놓인다 -->
+    <header class="team-intro">
+      <h1>On-Premise-Sky</h1>
+      <p>각자의 포트폴리오를 한곳에 모으고, GitHub에서 함께 리뷰하며 협업 과정을 기록합니다.</p>
+      <p>Git 브랜치, PR, 코드 리뷰, 충돌 해결 워크플로우를 팀으로 직접 경험합니다.</p>
+    </header>
+
+    <!-- 팀원 카드: members.js가 members 배열로 채운다 -->
+    <section class="members" aria-labelledby="members-title">
+      <h2 id="members-title" class="visually-hidden">팀원</h2>
+      <ul id="member-list" class="member-list"></ul>
+      <noscript><p class="noscript">팀원 카드를 보려면 JavaScript를 켜 주세요.</p></noscript>
+    </section>
+  </main>
+
+</body>
+</html>
