@@ -29,3 +29,5 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 - [협업 가이드 (CONTRIBUTING)](docs/CONTRIBUTING.md)
 - [충돌 해결 기록](docs/conflict-resolution.md)
 - [트러블슈팅 기록](docs/troubleshooting-log.md)
+
+> 임시 메모: Pages 배포 후 URL 추가 예정
