@@ -13,25 +13,25 @@ const members = [
     hasSite: true,
   },
   {
+    id: 'ktheodoreyw',
+    name: '김영운',
+    role: '미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md',
+    intro: '비즈니스 가치를 만드는 AX 컨설턴트',
+    hasSite: true,
+  },
+  {
     id: 'yhana972',
     name: '김나현',
     role: '팀 랜딩 페이지 제작·최종 점검',
     intro: '사용자에게 편리하고 자연스러운 경험을 만드는 개발자',
-    hasSite: false,
+    hasSite: true,
   },
   {
-    id: UNCONFIRMED,
-    name: UNCONFIRMED,
-    role: UNCONFIRMED,
-    intro: UNCONFIRMED,
-    hasSite: false,
-  },
-  {
-    id: UNCONFIRMED,
-    name: UNCONFIRMED,
-    role: UNCONFIRMED,
-    intro: UNCONFIRMED,
-    hasSite: false,
+    id: 'SIUUU1',
+    name: '안시우',
+    role: 'team/README.md, CODEOWNERS, Git 히스토리 증빙',
+    intro: '개발·데이터·의료 도메인을 잇는 엔지니어',
+    hasSite: true,
   },
 ];
 
