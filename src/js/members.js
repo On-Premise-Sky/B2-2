@@ -11,6 +11,7 @@ const members = [
     role: '저장소·보호 규칙 관리, Pages 배포',
     intro: '동료와 함께 자라는 개발자',
     hasSite: true,
+    github: 'https://github.com/sw0410',
   },
   {
     id: 'ktheodoreyw',
@@ -18,6 +19,7 @@ const members = [
     role: '미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md',
     intro: '비즈니스 가치를 만드는 AX 컨설턴트',
     hasSite: true,
+    github: 'https://github.com/ktheodoreyw',
   },
   {
     id: 'yhana972',
@@ -25,6 +27,7 @@ const members = [
     role: '팀 랜딩 페이지 제작·최종 점검',
     intro: '사용자에게 편리하고 자연스러운 경험을 만드는 개발자',
     hasSite: true,
+    github: 'https://github.com/yhana972',
   },
   {
     id: 'SIUUU1',
@@ -32,6 +35,7 @@ const members = [
     role: 'team/README.md, CODEOWNERS, Git 히스토리 증빙',
     intro: '개발·데이터·의료 도메인을 잇는 엔지니어',
     hasSite: true,
+    github: 'https://github.com/SIUUU1',
   },
 ];
 
@@ -58,11 +62,17 @@ const createSiteEntry = ({ id, name, hasSite }) => {
 };
 
 const createCard = (member) => {
-  const { id, name, role, intro } = member;
+  const { id, name, role, intro, github } = member;
   const card = document.createElement('li');
   card.className = 'member-card';
+
+  const handle = createText('a', 'member-handle', `@${id}`);
+  handle.href = github;
+  handle.target = '_blank';
+  handle.rel = 'noopener';
+
   card.append(
-    createText('p', 'member-handle', id === UNCONFIRMED ? `ID ${UNCONFIRMED}` : `@${id}`),
+    handle,
     createText('h3', 'member-name', name),
     createText('p', 'member-role', role),
     createText('p', 'member-intro', intro),
