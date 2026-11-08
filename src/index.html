@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- index.html: 페이지 구조. 모양은 style.css, 팀원 데이터와 카드 렌더링은 members.js가 맡는다. -->
+<!-- index.html: 페이지 구조. 모양은 style.css, 팀원 데이터는 data/members.json, 카드 렌더링은 js/render.js가 맡는다. -->
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@400;500&display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/members.js" defer></script>
+  <script src="js/render.js" defer></script>
 </head>
 <body>
 
@@ -29,7 +29,7 @@
       <p>Git 브랜치, PR, 코드 리뷰, 충돌 해결 워크플로우를 팀으로 직접 경험합니다.</p>
     </header>
 
-    <!-- 팀원 카드: members.js가 members 배열로 채운다 -->
+    <!-- 팀원 카드: render.js가 data/members.json을 읽어 채운다 -->
     <section class="members" aria-labelledby="members-title">
       <h2 id="members-title" class="visually-hidden">팀원</h2>
       <ul id="member-list" class="member-list"></ul>
