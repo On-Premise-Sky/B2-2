@@ -9,7 +9,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 1 | 2026-11-07 | 같은 위치에 팀원 행 추가 | [#14](https://github.com/On-Premise-Sky/B2-2/pull/14), [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) | 김나현 | 예 |
 | 2 | 2026-11-07 | 같은 hunk의 팀원 표 행 추가 + 빈 행·머리글 정리 | [#15](https://github.com/On-Premise-Sky/B2-2/pull/15) | 안시우 | 예 |
-| 3 | | | # | | |
+| 3 | 2026-11-07 | 같은 hunk의 팀원 표 행 추가 (2개 파일) | [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) | 김영운 | 예 |
 
 ---
 
@@ -257,3 +257,121 @@ git merge --abort
 - 한쪽이 **삭제**하고 다른 쪽이 같은 블록에 **추가**하면, 행 추가끼리 부딪히는 경우보다 양쪽 의도를 읽기 어렵습니다. 마커만 지우고 한쪽을 고르면 의도가 소실되므로 원래 PR의 논의를 먼저 확인해야 합니다.
 - 표 전체 정리처럼 여러 사람의 변경이 다 모인 뒤에만 가능한 작업은, 마지막 병합자가 충돌 해결과 같은 커밋에서 처리하면 같은 자리를 다시 건드리는 추가 충돌을 막을 수 있습니다. 이 방식은 PR #14 리뷰에서 미리 합의했습니다.
 - 같은 파일의 맞닿은 위치를 여러 사람이 고칠 때는 누가 어느 줄을 쓸지 먼저 알리는 것이 비용이 가장 적습니다. 이 기록 파일도 요약표 행을 미리 나눠 쓰기로 공유했습니다.
+
+---
+
+### 충돌 #3: 사이트 PR 병합 순서로 생긴 팀원 표 두 파일 충돌
+
+- **날짜**: 2026-11-07
+- **관련 브랜치 / PR**: `feature/ktheodoreyw-site` ↔ `origin/main` / [#18](https://github.com/On-Premise-Sky/B2-2/pull/18) (main 쪽 변경: [#16](https://github.com/On-Premise-Sky/B2-2/pull/16))
+- **참여자**: 작성자 김영운, main 쪽 변경 이승우, 리뷰어 김나현(승인)·이승우(사후 리뷰)
+- **유형**: 같은 hunk 수정 (2개 파일: 인접한 빈 행을 서로 다른 팀원 행으로 교체 + 표 맨 아래에 서로 다른 행 추가)
+
+#### 1. 상황 (어떻게 충돌이 생겼나)
+
+팀이 정한 병합 순서 A → B → C → D에서 저는 B였습니다. `feature/ktheodoreyw-site`는 `e8dbae4`(PR #9 병합 시점)를 기준으로 작업했고, 그 사이 A의 PR #16이 먼저 main에 병합되었습니다. 두 브랜치가 같은 두 파일의 같은 표를 고쳤기 때문에 PR #18 병합 전에 충돌이 발생했습니다. 이 기록은 팀에서 처음 발생한 충돌이며, 이후 충돌 #1(김나현)·#2(안시우)는 이 해결 결과가 반영된 main을 받아오면서 이어졌습니다.
+
+- 루트 `README.md`: 제 브랜치는 병합 순서에 맞추려고 첫 번째 빈 행을 비워 두고 **두 번째** 빈 행을 김영운 행으로 바꿨고(`15866dd`), main은 **첫 번째** 빈 행을 이승우 행으로 바꿨습니다. 서로 다른 줄을 고쳤지만 **바로 붙어 있는 줄**이라 Git이 같은 hunk로 보고 자동 병합하지 못했습니다.
+- `team/README.md`: 양쪽 모두 표 맨 아래 같은 위치에 자기 행을 추가했습니다. 제 브랜치는 처음에 예시 코드 블록 안에 행을 넣었다가 `9a4aad0`에서 표 안으로 옮겼습니다.
+
+- 병합 전 HEAD: `9a4aad0a463f1631261e7d29395fd2d258538a12`
+- 가져온 main: `c5c3872bcdbec1bea296e38a5b477968dc143909`
+
+#### 2. 재현 절차
+
+병합 전에 main 쪽에서도 먼저 머지를 시도해 충돌을 확인하고, `git status`·`git diff` 출력을 저장소 밖(`~/conflict-logs/B2-2-pr18/`)에 저장한 뒤 `git merge --abort`로 되돌렸습니다. 실제 해결은 Branch Protection 규칙에 따라 PR 브랜치에서 진행했습니다.
+
+```bash
+git switch feature/ktheodoreyw-site
+git fetch origin
+git merge origin/main
+git status --short
+```
+
+```text
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Auto-merging team/README.md
+CONFLICT (content): Merge conflict in team/README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+`git status --short`에서 충돌 파일은 두 개로 표시됐습니다. 나머지(`team/sw0410/` 폴더)는 main에서 정상 병합된 변경 파일입니다.
+
+```text
+UU README.md
+UU team/README.md
+```
+
+같은 충돌을 나중에 재현하려면 작업을 모두 커밋한 상태의 별도 실습 브랜치에서 아래 고정 커밋을 사용합니다.
+
+```bash
+git switch -c practice/ktheodoreyw-conflict-replay 9a4aad0a463f1631261e7d29395fd2d258538a12
+git merge --no-commit c5c3872bcdbec1bea296e38a5b477968dc143909
+# 충돌 상태를 확인한 뒤 재현 실습을 종료
+git merge --abort
+```
+
+#### 3. 충돌 내용
+
+`README.md` — HEAD 쪽은 첫 번째 빈 행을 남기고 두 번째 자리에 김영운 행을, origin/main 쪽은 첫 번째 자리에 이승우 행을 넣고 두 번째 빈 행을 남겼습니다.
+
+```text
+<<<<<<< HEAD
+|  | @ | |
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md |
+=======
+| 이승우 | [@sw0410](https://github.com/sw0410) | 저장소·보호 규칙 관리, Pages 배포 |
+|  | @ | |
+>>>>>>> origin/main
+```
+
+`team/README.md` — HEAD 쪽은 김영운 행, origin/main 쪽은 먼저 병합된 이승우 행입니다.
+
+```text
+<<<<<<< HEAD
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 비즈니스 가치를 만드는 AX 컨설턴트 | [개인 사이트](ktheodoreyw/) |
+=======
+| 이승우 | [@sw0410](https://github.com/sw0410) | 동료와 함께 자라는 개발자 | [개인 사이트](sw0410/) |
+>>>>>>> origin/main
+```
+
+#### 4. 해결 방법과 이유
+
+두 사람의 정보가 모두 유효하므로 양쪽을 보존하는 keep both 방식으로 수동 편집했습니다. 충돌 마커를 제거하고 팀이 정한 병합 순서대로 이승우(A) → 김영운(B)으로 배치했습니다.
+
+루트 `README.md`에서는 양쪽에 하나씩 남아 있던 빈 행 중 HEAD 쪽 빈 행은 이승우 행이 차지했으므로 제거하고, main 쪽 빈 행은 C·D가 사용할 자리로 남겨 빈 행이 원래대로 2개가 되도록 맞췄습니다. 표 머리글·빈 행 정리는 마지막 병합(D) 때 처리하기로 한 합의에 따라 이 단계에서는 하지 않았습니다.
+
+```markdown
+| 이름 | GitHub | 담당 |
+| --- | --- | --- |
+| 이승우 | [@sw0410](https://github.com/sw0410) | 저장소·보호 규칙 관리, Pages 배포 |
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 미션 설계, 템플릿 제작, CONTRIBUTING 총괄, SUBMISSION.md |
+|  | @ | |
+|  | @ | |
+```
+
+`team/README.md`도 같은 순서로 두 행을 배치하고, 아래 예시 코드 블록은 그대로 남겼습니다.
+
+```markdown
+| 이름 | GitHub | 한 줄 소개 | 사이트 |
+| --- | --- | --- | --- |
+| 이승우 | [@sw0410](https://github.com/sw0410) | 동료와 함께 자라는 개발자 | [개인 사이트](sw0410/) |
+| 김영운 | [@ktheodoreyw](https://github.com/ktheodoreyw) | 비즈니스 가치를 만드는 AX 컨설턴트 | [개인 사이트](ktheodoreyw/) |
+```
+
+#### 5. 결과
+
+- 해결 커밋: `3af48c3` (`Merge remote-tracking branch 'origin/main' into feature/ktheodoreyw-site`), PR 병합 커밋: `3adf7d4`
+- 두 사람의 담당, 소개, 개인 사이트 링크를 모두 보존했습니다.
+- 두 파일에서 충돌 마커가 남지 않았는지 `grep`으로 확인했습니다.
+- `git diff origin/main -- README.md team/README.md`로 main 대비 김영운 행만 추가되었는지 확인했습니다.
+- 상대 경로 `sw0410/`, `ktheodoreyw/` 각각에 `index.html`이 존재하는지 확인했습니다.
+- 스테이징 후 미해결 파일 목록이 비었는지 확인했습니다.
+
+#### 6. 주의점 / 배운 점
+
+- 서로 **다른 줄**을 고쳐도 그 줄들이 **바로 붙어 있으면** Git은 같은 hunk로 보고 충돌을 냅니다. 병합 순서를 예상해 미리 두 번째 빈 행에 넣어 두었지만 충돌을 피하지 못했습니다.
+- 충돌 마커의 HEAD는 "지금 내가 있는 브랜치"입니다. main에서 머지하면 HEAD가 main, PR 브랜치에서 머지하면 HEAD가 내 브랜치가 되어 위아래가 반대로 나오므로, 기록할 때 어느 쪽에서 머지했는지 함께 적어야 합니다.
+- 충돌 출력은 저장소 밖에 저장해야 기록용 파일이 실수로 커밋되지 않습니다.
+- main을 직접 수정하지 않고 PR 브랜치에서 main을 받아 해결한 뒤 push하면, 해결 과정이 PR 안에서 리뷰되고 Branch Protection 규칙도 지킬 수 있습니다.
