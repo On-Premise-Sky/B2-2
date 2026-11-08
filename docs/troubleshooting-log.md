@@ -9,7 +9,7 @@
 | 1. 최근 커밋 메시지 수정 | `git commit --amend` | | 미완료 |
 | 2. 로컬 커밋 취소, 변경 유지 | `git reset --soft HEAD~1` | 김나현 | 완료 |
 | 3. push된 커밋 되돌리기 | `git revert <커밋>` | | 미완료 |
-| 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | | 미완료 |
+| 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | 안시우 | 완료 |
 
 ## 언제 무엇을 쓰나 (요약)
 
@@ -119,12 +119,56 @@ git log --oneline -2
 
 ## 시나리오 4. `git stash` / `git stash pop`
 
-- **작성자 / 역할**:
-- **상황**:
-- **절차**:
+- **작성자 / 역할**: 안시우 / `team/README.md` 담당
+- **상황**: `team/README.md`에 팀 소개 랜딩 페이지로 이동하는 링크를 추가하려고 파일을 고쳤는데, 작업을 시작할 때 브랜치를 만들지 않아 `main`에서 수정하고 있었습니다. 팀 규칙상 `main`에 직접 반영하지 않고 PR을 거쳐야 하므로, 변경을 보존하면서 올바른 브랜치로 옮겨야 했습니다.
+- **절차**: `git stash push`로 변경을 보관하고, `git stash list`로 보관 여부를 확인했습니다. 작업 브랜치를 새로 만든 뒤 `git stash pop`으로 복원했습니다.
 
 ```bash
+# 실수를 발견한 지점: main에서 파일을 고치고 있었다
+git branch --show-current
+git status --short
+
+# 변경을 보관하고 작업 트리를 비운다
+git stash push -m "team/README.md 랜딩 페이지 링크 추가"
+git stash list
+git status --short
+
+# 올바른 작업 브랜치를 만들고 변경을 되돌려 놓는다
+git switch -c fix/SIUUU1-team-readme-link
+git stash pop
+git stash list
+git status --short
 ```
 
-- **결과**:
+- **결과**: 변경을 그대로 유지한 채 `main`에서 작업 브랜치로 옮겼습니다.
+
+  **보관** — 작업 트리가 비워졌고 보관 목록에 1건이 생겼습니다.
+
+  ```text
+  Saved working directory and index state On main: team/README.md 랜딩 페이지 링크 추가
+  ```
+
+  ```text
+  stash@{0}: On main: team/README.md 랜딩 페이지 링크 추가
+  ```
+
+  이 시점에 `git status --short`는 아무것도 출력하지 않았습니다. 변경이 작업 트리에서 보관 목록으로 옮겨졌다는 뜻입니다.
+
+  **복원** — 새 브랜치에서 변경이 되살아나고, 보관 항목은 목록에서 제거됐습니다.
+
+  ```text
+  현재 브랜치 fix/SIUUU1-team-readme-link
+  커밋하도록 정하지 않은 변경 사항:
+  	수정함:        team/README.md
+
+  Dropped refs/stash@{0} (b5d43f977104cf516156b773e50311735b08552c)
+  ```
+
+  복원 후 `git stash list`는 비어 있었고, `git status --short`는 `M team/README.md`를 출력했습니다. `git diff`로 링크 한 줄이 그대로 남아 있는 것을 확인했습니다.
+
 - **주의점**:
+  - `git stash`는 현재 브랜치의 커밋 이력을 변경하지 않습니다. 보관한 변경은 `refs/stash`에 별도로 쌓이므로 공유 브랜치에서도 안전합니다.
+  - `pop`은 복원하면서 보관 항목을 **삭제**합니다. 같은 변경을 여러 브랜치에 적용해야 하면 항목을 남기는 `git stash apply`를 쓰고, 끝난 뒤 `git stash drop`으로 지웁니다.
+  - 미추적 파일(`??`)은 기본적으로 보관되지 않습니다. 새로 만든 파일까지 함께 옮기려면 `git stash push -u`를 사용합니다.
+  - 보관할 때 `-m`으로 설명을 남기면 나중에 `git stash list`에서 무엇을 보관했는지 알 수 있습니다. 설명이 없으면 `WIP on <브랜치>`로만 표시됩니다.
+  - 복원할 브랜치에서 같은 파일이 이미 달라져 있으면 `pop` 단계에서 충돌이 납니다. 그때는 충돌을 해결한 뒤 `git stash drop`으로 항목을 정리합니다.
