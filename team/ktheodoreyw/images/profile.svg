@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="프로필 이미지 자리표시자">
+  <rect width="400" height="400" fill="#DCE0EA"/>
+  <circle cx="200" cy="160" r="72" fill="#9AA5BD"/>
+  <path d="M60 400c0-88 62-150 140-150s140 62 140 150z" fill="#9AA5BD"/>
+</svg>

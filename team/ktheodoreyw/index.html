@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- title / description 은 js/config.js 의 meta 값으로 덮어써집니다 -->
+  <title>Portfolio</title>
+  <meta name="description" content="포트폴리오 웹사이트">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- 허용된 외부 리소스: 웹 폰트(Google Fonts), 아이콘(Font Awesome) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- 외부 스타일시트 -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JavaScript: defer 로 연결 (HTML 파싱을 막지 않고, 작성 순서대로 실행됨)
+       1) config.js : 사이트에 들어갈 "내용"만 모아둔 데이터 파일
+       2) main.js   : 상태 관리 · 이벤트 · 렌더링 "로직" -->
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+  <!-- ===================== Header / Navigation ===================== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="nav__logo" href="#hero" id="nav-logo">Portfolio</a>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#awards">Awards</a></li>
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-pressed="false" aria-label="다크 모드로 전환">
+          <i class="fa-solid fa-moon" id="theme-icon" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <p class="hero__greeting" id="hero-greeting">[인사말]</p>
+        <h1 class="hero__title" id="hero-title">[이름 / 한 줄 소개]</h1>
+
+        <!-- [BONUS 2] 타이핑 효과가 출력되는 자리.
+             보너스를 끄면(config.features.typingEffect = false) hero.role 고정 문구가 표시됩니다. -->
+        <p class="hero__typing">
+          <span id="typing-text" aria-hidden="true">[역할 / 직무]</span><span class="typing-cursor" id="typing-cursor" aria-hidden="true"></span>
+          <span class="visually-hidden" id="typing-fallback"></span>
+        </p>
+
+        <p class="hero__description" id="hero-description">[짧은 소개 문장]</p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#projects" id="hero-cta-primary">프로젝트 보기</a>
+          <a class="btn btn--ghost" href="#contact" id="hero-cta-secondary">문의하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== About ===================== -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" id="about-title">About</h2>
+          <p class="section__lead" id="about-lead">[About 섹션 한 줄 설명]</p>
+        </header>
+
+        <div class="about reveal">
+          <figure class="about__figure">
+            <img class="about__image" id="about-image" src="images/profile.svg" alt="프로필 사진" width="400" height="400">
+          </figure>
+          <div class="about__body">
+            <!-- 자기소개 문단: config.about.paragraphs -->
+            <div class="about__text" id="about-text">
+              <p>[자기소개 문단]</p>
+            </div>
+            <!-- 핵심 정보 목록: config.about.facts -->
+            <dl class="about__facts" id="about-facts"></dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Awards (수상경력) ===================== -->
+    <section class="section section--alt" id="awards" aria-labelledby="awards-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" id="awards-title">Awards</h2>
+          <p class="section__lead" id="awards-lead">[Awards 섹션 한 줄 설명]</p>
+        </header>
+
+        <!-- 등급별 수상 건수 요약: config.awards.items 를 prize 기준으로 집계 -->
+        <ul class="awards-summary reveal" id="awards-summary" aria-label="등급별 수상 건수"></ul>
+
+        <!-- 연도별 수상 목록: config.awards.items 를 year 기준으로 묶어 주입 -->
+        <div class="awards-timeline" id="awards-timeline"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Skills ===================== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" id="skills-title">Skills</h2>
+          <p class="section__lead" id="skills-lead">[Skills 섹션 한 줄 설명]</p>
+        </header>
+
+        <!-- 기술 스택 카드: config.skills 를 map 으로 <article> 로 변환해 주입 -->
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Projects (GitHub API) ===================== -->
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" id="projects-title">Projects</h2>
+          <p class="section__lead" id="projects-lead">[Projects 섹션 한 줄 설명]</p>
+        </header>
+
+        <!-- [BONUS 1] 언어별 필터 버튼이 주입되는 자리 -->
+        <div class="filters" id="project-filters" role="group" aria-label="언어별 프로젝트 필터"></div>
+
+        <!-- 로딩 / 성공 / 에러 / 빈 상태가 이 영역에 렌더링됩니다 -->
+        <div class="projects-view" id="projects-view" aria-live="polite" aria-busy="false"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" id="contact-title">Contact</h2>
+          <p class="section__lead" id="contact-lead">[Contact 섹션 한 줄 설명]</p>
+        </header>
+
+        <!-- novalidate: 브라우저 기본 말풍선 대신 직접 만든 유효성 검사 UI를 사용 -->
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="name">이름</label>
+            <input class="form-input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+            <p class="field-error" id="name-error" aria-live="polite"></p>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="email">이메일</label>
+            <input class="form-input" type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+            <p class="field-error" id="email-error" aria-live="polite"></p>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="message">메시지</label>
+            <textarea class="form-input form-input--textarea" id="message" name="message" rows="6" required aria-describedby="message-error"></textarea>
+            <p class="field-error" id="message-error" aria-live="polite"></p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary" id="submit-btn">메시지 보내기</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__copy">&copy; <span id="footer-year">2026</span> <span id="footer-name">[이름]</span>. All rights reserved.</p>
+      <!-- 소셜 링크: config.footer.socialLinks -->
+      <ul class="social-links" id="social-links"></ul>
+    </div>
+  </footer>
+
+  <!-- 스크롤 탑 버튼 -->
+  <button type="button" class="scroll-top" id="scroll-top" aria-label="맨 위로 이동">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+</body>
+</html>
