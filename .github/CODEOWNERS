@@ -1,0 +1,31 @@
+# 코드 오너 설정
+#
+# 경로별로 리뷰를 받아야 할 사람을 지정합니다.
+# "Require review from Code Owners"를 활성화한 경우, GitHub은 PR을 올린
+# 사람을 코드 오너 승인자에서 제외하므로, 오너가 1명이면 그 사람이 해당
+# 경로를 수정할 때 승인을 받을 수 없습니다.
+# 따라서 모든 경로에 오너를 2명 이상 지정합니다.
+#
+# 규칙은 아래로 갈수록 우선합니다 (마지막에 일치한 규칙만 적용).
+# 그래서 가장 넓은 `*`를 맨 위에 둡니다.
+
+# 기본값: 따로 지정하지 않은 모든 경로는 팀 전체
+*                               @sw0410 @ktheodoreyw @yhana972 @SIUUU1
+
+# 개인 소개 사이트: 본인 + 교차 검토자
+/team/sw0410/                   @sw0410 @SIUUU1
+/team/ktheodoreyw/              @ktheodoreyw @sw0410
+/team/yhana972/                 @yhana972 @ktheodoreyw
+/team/SIUUU1/                   @SIUUU1 @yhana972
+
+# 공통 문서: 담당자 + 교차 검토자
+/README.md                      @yhana972 @SIUUU1
+/SUBMISSION.md                  @ktheodoreyw @sw0410
+/team/README.md                 @SIUUU1 @yhana972
+/docs/CONTRIBUTING.md           @yhana972 @SIUUU1
+/docs/conflict-resolution.md    @SIUUU1 @sw0410
+/docs/troubleshooting-log.md    @ktheodoreyw @sw0410
+
+# 템플릿·저장소 설정
+/.github/                       @ktheodoreyw @sw0410
+/.github/CODEOWNERS             @SIUUU1 @ktheodoreyw
