@@ -4,7 +4,7 @@
 
 원래 [sw0410/website-project](https://github.com/sw0410/website-project)에서 만든 사이트를 팀 소개 결과물로 옮겨 왔습니다.
 
-**배포 주소:** https://on-premise-sky.github.io/B2-2/team/sw0410/ (Day 5에 Pages 활성화 예정)
+**배포 주소:** https://on-premise-sky.github.io/B2-2/team/sw0410/
 
 ## 화면
 

@@ -25,7 +25,12 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 - [랜딩 페이지 소스](src/index.html)
 - [팀원별 소개 및 개인 사이트 목록](team/README.md)
 
-로컬에서 실행하려면 저장소를 VS Code로 열고 `src/index.html`을 Live Server로 실행합니다. GitHub의 소스 링크에서는 HTML 코드가 표시되며, GitHub Pages 배포가 완료되면 이 섹션에 웹페이지 접속 주소도 추가합니다.
+배포된 페이지는 GitHub Pages에서 바로 볼 수 있습니다.
+
+- 랜딩 페이지: https://on-premise-sky.github.io/B2-2/src/
+- 개인 사이트: [이승우](https://on-premise-sky.github.io/B2-2/team/sw0410/) · [김영운](https://on-premise-sky.github.io/B2-2/team/ktheodoreyw/) · [김나현](https://on-premise-sky.github.io/B2-2/team/yhana972/) · [안시우](https://on-premise-sky.github.io/B2-2/team/SIUUU1/)
+
+로컬에서 실행하려면 저장소를 VS Code로 열고 `src/index.html`을 Live Server로 실행합니다.
 
 ## 문서
 
