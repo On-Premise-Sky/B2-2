@@ -13,9 +13,9 @@ Git 브랜치 · PR · 코드 리뷰 · 충돌 해결 워크플로우를 팀으�
 
 ## 브랜치 전략: GitHub Flow
 
-> 팀 규모가 작고 배포 단계가 따로 없어서, main + feature/* 두 종류만 쓰는 GitHub Flow가 가장 단순합니다.
+> 팀 규모가 작고 main이 곧 배포 대상(GitHub Pages)이라, main과 짧은 작업 브랜치(`feature/`, `fix/`, `docs/`)만 쓰는 GitHub Flow가 가장 단순합니다.
 > 모든 변경이 PR을 거치므로 리뷰와 이슈 추적이 자연스럽게 강제됩니다.
-> main은 항상 "깨지지 않는 상태"로 유지하고, 작업은 짧은 feature 브랜치에서 끝냅니다.
+> main은 항상 "깨지지 않는 상태"로 유지하고, 작업은 짧은 작업 브랜치에서 끝냅니다.
 
 자세한 규칙은 [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)를 참고하세요.
 
