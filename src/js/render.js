@@ -26,11 +26,17 @@ const createSiteEntry = ({ id, name, hasSite }) => {
 };
 
 const createCard = (member) => {
-  const { id, name, role, intro } = member;
+  const { id, name, role, intro, github } = member;
   const card = document.createElement('li');
   card.className = 'member-card';
+
+  const handle = createText('a', 'member-handle', `@${id}`);
+  handle.href = github;
+  handle.target = '_blank';
+  handle.rel = 'noopener';
+
   card.append(
-    createText('p', 'member-handle', id === UNCONFIRMED ? `ID ${UNCONFIRMED}` : `@${id}`),
+    handle,
     createText('h3', 'member-name', name),
     createText('p', 'member-role', role),
     createText('p', 'member-intro', intro),
