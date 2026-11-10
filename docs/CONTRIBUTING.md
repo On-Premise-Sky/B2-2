@@ -140,4 +140,15 @@ git merge origin/main
 5. 검증 방법: 로컬에서 무엇을 어떻게 확인했는지
 6. 주의점
 
-주의: 공유 브랜치(`main`)에는 `--force` push, rebase 금지. 개인 feature 브랜치의 히스토리 정리는 팀에 먼저 알린 뒤 진행합니다.
+주의: 공유 브랜치(`main`)에는 `--force` push, rebase 금지. 개인 feature 브랜치의 히스토리 정리는 팀에 먼저 알린 뒤 진행합니다. 자세한 기준은 6장을 따릅니다.
+
+
+## 6. 히스토리 정리 (`git rebase -i`)
+
+### 기준
+
+- 히스토리 정리는 본인 작업 브랜치에서, push하기 전 로컬 커밋에만 합니다.
+- 오타 수정·자잘한 보완 커밋은 관련 커밋에 `squash`(또는 `fixup`)로 합칩니다.
+- `update`, `wip`처럼 컨벤션에 맞지 않는 메시지는 `reword`로 고칩니다.
+- 정리 전에 `git branch backup/<브랜치>`로 백업하고, 정리 후 `git diff backup/<브랜치> HEAD` 결과가 비어 있는지 확인합니다(내용은 그대로, 커밋만 정리).
+- 이미 push한 커밋을 정리해야 하면 팀에 먼저 알리고 `git push --force-with-lease`를 사용합니다. `main`에는 하지 않습니다.
