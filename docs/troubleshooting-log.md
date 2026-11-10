@@ -10,6 +10,7 @@
 | 2. 로컬 커밋 취소, 변경 유지 | `git reset --soft HEAD~1` | 김나현 | 완료 |
 | 3. push된 커밋 되돌리기 | `git revert <커밋>` | 이승우 | 완료 |
 | 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | 안시우 | 완료 |
+| 5. 로컬 커밋 정리 | `git rebase -i` | 김영운 | 완료 |
 
 ## 언제 무엇을 쓰나 (요약)
 
@@ -19,6 +20,7 @@
 | `reset --soft HEAD~1` | 바꿈 (커밋만 취소) | push 전, 커밋을 다시 나누거나 고쳐 쓰고 싶을 때 |
 | `revert` | 안 바꿈 (취소 커밋 추가) | 이미 push된 커밋을 안전하게 되돌릴 때 |
 | `stash` | 커밋 없음 | 작업 중에 급히 다른 브랜치로 옮겨야 할 때 |
+| `rebase -i` | 바꿈 (커밋 합치기·메시지 수정) | push 전, 자잘한 커밋을 합치고 메시지를 정리할 때 |
 
 ---
 
@@ -226,3 +228,50 @@ git status --short
   - 미추적 파일(`??`)은 기본적으로 보관되지 않습니다. 새로 만든 파일까지 함께 옮기려면 `git stash push -u`를 사용합니다.
   - 보관할 때 `-m`으로 설명을 남기면 나중에 `git stash list`에서 무엇을 보관했는지 알 수 있습니다. 설명이 없으면 `WIP on <브랜치>`로만 표시됩니다.
   - 복원할 브랜치에서 같은 파일이 이미 달라져 있으면 `pop` 단계에서 충돌이 납니다. 그때는 충돌을 해결한 뒤 `git stash drop`으로 항목을 정리합니다.
+
+## 시나리오 5. `git rebase -i` (히스토리 정리)
+
+- **작성자 / 역할**: 김영운 / 미션 설계, CONTRIBUTING 총괄
+- **상황**: CONTRIBUTING 6장(히스토리 정리 기준)을 작성하면서 기준 추가, 오타 수정(`오타 수정`), 예시 추가(`update`) 커밋 3개가 생겼습니다. 오타 수정은 독립된 의미가 없고 `update`는 컨벤션 위반이라, push 전에 `git rebase -i`로 정리했습니다.
+- **절차**: 백업 브랜치를 만든 뒤 `git rebase -i HEAD~3`에서 오타 수정 커밋은 `squash`로 첫 커밋에 합치고, `update` 커밋은 `reword`로 메시지를 고쳤습니다.
+
+```bash
+git log --oneline -4
+git branch backup/history-cleanup
+git rebase -i HEAD~3
+git log --oneline -3
+git diff --stat backup/history-cleanup HEAD
+```
+
+할 일 목록 수정 내용:
+
+```text
+pick d068392 docs: CONTRIBUTING에 히스토리 정리 기준 추가
+squash 9d837dc 오타 수정
+reword 65b8cb8 update
+```
+
+- **결과**: 커밋 3개가 2개로 정리되었고, 컨벤션에 맞지 않는 메시지가 사라졌습니다. `git diff --stat backup/history-cleanup HEAD` 출력이 비어 있어 파일 내용은 정리 전과 같습니다.
+
+**정리 전**
+
+```text
+65b8cb8 update
+9d837dc 오타 수정
+d068392 docs: CONTRIBUTING에 히스토리 정리 기준 추가
+3e668c7 Merge pull request #44 from On-Premise-Sky/docs/ktheodoreyw-amend-redo
+```
+
+**정리 후**
+
+```text
+581170c docs: CONTRIBUTING 히스토리 정리 예시 추가
+32638ff docs: CONTRIBUTING에 히스토리 정리 기준 추가
+3e668c7 Merge pull request #44 from On-Premise-Sky/docs/ktheodoreyw-amend-redo
+```
+
+- **주의점**:
+  - rebase는 커밋을 새로 만들어 다시 쌓으므로 정리한 커밋의 해시가 모두 바뀝니다.
+  - push하기 전 로컬 커밋에서만 정리합니다. 이미 push한 커밋을 정리하면 강제 push가 필요하므로 팀에 먼저 알리고 `--force-with-lease`를 사용합니다.
+  - 할 일 목록은 오래된 커밋이 위입니다. 맨 위 줄을 `squash`로 바꾸면 합칠 대상이 없어 실패합니다.
+  - 정리 중 문제가 생기면 `git rebase --abort`, 정리 후라면 백업 브랜치로 `git reset --hard`해 되돌립니다.
