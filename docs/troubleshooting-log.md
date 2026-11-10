@@ -6,7 +6,7 @@
 
 | 시나리오 | 명령어 | 담당자 | 상태 |
 | --- | --- | --- | --- |
-| 1. 최근 커밋 메시지 수정 | `git commit --amend` | | 미완료 |
+| 1. 최근 커밋 메시지 수정 | `git commit --amend` | 김영운 | 진행중 |
 | 2. 로컬 커밋 취소, 변경 유지 | `git reset --soft HEAD~1` | 김나현 | 완료 |
 | 3. push된 커밋 되돌리기 | `git revert <커밋>` | 이승우 | 완료 |
 | 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | 안시우 | 완료 |
@@ -24,8 +24,8 @@
 
 ## 시나리오 1. `git commit --amend`
 
-- **작성자 / 역할**:
-- **상황**:
+- **작성자 / 역할**: 김영운 / 미션 설계, CONTRIBUTING 총괄
+- **상황**: 앞서 GitHub 웹 편집기의 기본 메시지(`Update docs/conflict-resolution.md`, `a31111d`)가 그대로 main에 머지되어 컨벤션을 어긴 커밋이 남았습니다. 같은 실수를 자기 브랜치에서 의도적으로 재현해(`update`), push 전에 amend로 교정했습니다.
 - **절차**:
 
 ```bash
