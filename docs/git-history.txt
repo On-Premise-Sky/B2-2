@@ -1,0 +1,181 @@
+*   abc77d7 Merge pull request #46 from On-Premise-Sky/feature/ktheodoreyw-history-cleanup
+|\  
+| * a21a425 docs: 트러블슈팅 시나리오 5(rebase -i 히스토리 정리) 기록 추가
+| * 581170c docs: CONTRIBUTING 히스토리 정리 예시 추가
+| * 32638ff docs: CONTRIBUTING에 히스토리 정리 기준 추가
+|/  
+*   3e668c7 Merge pull request #44 from On-Premise-Sky/docs/ktheodoreyw-amend-redo
+|\  
+| * faf8602 docs: 트러블슈팅 시나리오 1(commit --amend) 기록 추가
+| * 5d8882c docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
+|/  
+*   142854d Merge pull request #41 from On-Premise-Sky/docs/sw0410-contributing-sync
+|\  
+| * 0e63a9e docs: CODEOWNERS 오너 2명 이유에 GitHub 동작임을 명시
+| * b78e644 docs: CODEOWNERS 절의 오너 2명 이유와 승인 수 설명 정정, 리뷰 짝 명시
+| * 8f54eaa docs: 브랜치 전략과 CODEOWNERS 운영 방식을 실제 운영에 맞게 수정
+* |   ae7e502 Merge pull request #39 from On-Premise-Sky/docs/sw0410-pages-url
+|\ \  
+| * | 5eaaa93 docs: 개인 사이트 README의 배포 예정 문구 정리
+| * | 2c07549 docs: README에 GitHub Pages 배포 주소 추가
+| |/  
+* |   e7382c6 Merge pull request #35 from On-Premise-Sky/fix/sw0410-revert-temp-note
+|\ \  
+| |/  
+|/|   
+| * ec5bd75 docs: 시나리오 3 제목 복구와 커밋 해시 표기 수정
+| * 38436f4 docs: 트러블슈팅 담당 현황에 시나리오 3 완료 반영
+| *   e2957dc Merge remote-tracking branch 'origin/main' into fix/sw0410-revert-temp-note
+| |\  
+| * | a35d585 docs: 트러블슈팅 시나리오 3(git revert) 기록 추가
+| * | 431aadb fix: README 임시 메모 되돌리기
+| | | * 8fc0758 docs: Git 히스토리 그래프 스크린샷 추가
+| | | * fd7befe docs: Git 히스토리 증빙 추가
+| |_|/  
+|/| |   
+* | |   a3a2bff Merge pull request #34 from On-Premise-Sky/feature/sw0410-member-github
+|\ \ \  
+| * | | ffbeb14 docs: 충돌 #4 modify/delete 해결 기록 추가
+| * | |   7eabc5f Merge remote-tracking branch 'origin/main' into feature/sw0410-member-github
+| |\ \ \  
+| |/ / /  
+|/| | |   
+* | | |   82e3cfb Merge pull request #30 from On-Premise-Sky/docs/ktheodoreyw-conflict-log
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| | * | e4b6497 fix: GitHub 링크에 hover·포커스 스타일 적용
+| | * |   56c2efd fix: members.js 삭제와 GitHub 링크 추가 충돌 해결
+| | |\ \  
+| | * | | 8869a8d feat: 팀원 카드에 GitHub 프로필 링크 추가
+| | | | | * 8dd085f docs: 트러블슈팅 시나리오 1(commit --amend) 기록 추가
+| | | | | * f681928 docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
+| |_|_|_|/| 
+|/| | | |/  
+| | |_|/|   
+| |/| | |   
+| * | | | a31111d Update docs/conflict-resolution.md
+| * | | | 3a7c17a docs: PR #18 충돌 해결 기록 추가
+| |/ / /  
+* | | |   60c1a4e Merge pull request #33 from On-Premise-Sky/fix/SIUUU1-team-readme-link
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| * | | 250f4c2 docs: stash 기록의 부정확한 서술 두 곳 수정
+| * | | 3126bd3 docs: 트러블슈팅 시나리오 4(git stash) 기록 추가
+| | |/  
+| |/|   
+* | |   c558951 Merge pull request #24 from On-Premise-Sky/docs/sw0410-temp-note
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 5f9df75 docs: README에 임시 메모 추가
+* | |   d081948 Merge pull request #31 from On-Premise-Sky/docs/yhana972-reset-log
+|\ \ \  
+| * | | 8794ace docs: 실습 당시 파일 경로와 후속 변경 안내
+| * | | 537fa19 docs: reset 실습 파일의 후속 변경 경로 안내
+| * | | 900e5b4 docs: reset 실습 과정과 커밋 분리 결과 기록
+| | |/  
+| |/|   
+* | |   b1998cf Merge pull request #27 from On-Premise-Sky/feature/SIUUU1-members-json
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 6a92a96 fix: 데이터 로딩 실패 안내를 file 프로토콜일 때만 구분
+| * | ecb3797 refactor: 팀원 데이터를 members.json으로 분리
+|/ /  
+* |   1b520eb Merge pull request #20 from On-Premise-Sky/feature/SIUUU1-codeowners
+|\ \  
+| * | d49f6df docs: CODEOWNERS 주석에 보호 옵션 활성화 조건 명시
+| * | dd39e2e chore: 경로별 코드 오너 설정 추가
+| |/  
+* |   170f0d0 Merge pull request #22 from On-Premise-Sky/feature/yhana972-landing
+|\ \  
+| |/  
+|/|   
+| * 1f4e9c7 docs: README에 랜딩 페이지 안내와 실행 경로 추가
+| * e966032 feat: 랜딩 팀원 정보와 개인 사이트 링크 완성
+| *   88e2403 Merge remote-tracking branch 'origin/main' into feature/yhana972-landing
+| |\  
+| |/  
+|/|   
+* |   33befff Merge pull request #15 from On-Premise-Sky/feature/SIUUU1-site
+|\ \  
+| * \   b0607f1 fix: 팀원 표 충돌 해결 및 빈 행·머리글 정리, 충돌 기록 추가
+| |\ \  
+| |/ /  
+|/| |   
+* | |   7569ac2 Merge pull request #14 from On-Premise-Sky/feature/yhana972-site
+|\ \ \  
+| * \ \   6abfe8a fix: 팀원 소개 표 충돌 해결 및 재현 기록 추가
+| |\ \ \  
+| |/ / /  
+|/| | |   
+* | | |   3adf7d4 Merge pull request #18 from On-Premise-Sky/feature/ktheodoreyw-site
+|\ \ \ \  
+| * \ \ \   3af48c3 Merge remote-tracking branch 'origin/main' into feature/ktheodoreyw-site
+| |\ \ \ \  
+| |/ / / /  
+|/| | | |   
+| * | | | 9a4aad0 fix: 팀원 표 위치와 개인 사이트 링크 수정
+| * | | | 15866dd docs: 팀원 표에 김영운 행과 개인 사이트 링크 추가
+| * | | | 0e1950d feat: team/ktheodoreyw 개인 사이트 추가 및 테마 저장 키 분리
+| | * | | d18710a docs: 팀원 목록에 자기 소개와 사이트 링크 추가
+| | * | |   afdd45d Merge remote-tracking branch 'origin/main' into feature/yhana972-site
+| | |\ \ \  
+| | * | | | 4c29ed3 docs: 팀원 소개 행을 표 맨 아래로 이동
+| | * | | | db453ae docs: README에 개인 소개와 담당 추가
+| | * | | | b50fe5f feat: 개인 소개 사이트 추가 및 테마 저장 키 분리
+| | | | * | 9956516 feat: 안시우 개인 소개 사이트와 팀원 정보 추가
+| | | |/ /  
+| | | | * dddadaf feat: 팀 소개 랜딩 페이지 구조 추가
+| | | | * d86ad3d feat: 팀원 데이터와 카드 렌더링 추가
+| | | | * ac7741b feat: 팀 랜딩 페이지 스타일 추가
+| |_|_|/  
+|/| | |   
+* | | |   c5c3872 Merge pull request #16 from On-Premise-Sky/feature/sw0410-site
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | df2ceb4 docs: 개인 README 스크린샷과 기능 설명을 현재 화면에 맞게 수정
+| * | | 85d1ae9 fix: 남아 있던 블로그 목록 CSS 규칙 삭제
+| * | | 1471668 docs: 개인 README를 팀 저장소 기준으로 갱신
+| * | | 6aa75a0 fix: 블로그 섹션과 posts 삭제, 안 쓰는 이미지 제거 및 탭 제목 변경
+| * | | b0b58fa docs: 팀원 표에 이승우 행과 개인 사이트 링크 추가
+| * | | d3fd64a feat: team/sw0410 개인 사이트 추가 및 테마 저장 키를 sw0410-theme로 변경
+| | |/  
+| |/|   
+* | |   e8dbae4 Merge pull request #9 from On-Premise-Sky/fix/sw0410-task-template-branch
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 70f7b4f fix: task.md의 브랜치 형식을 새 규칙으로 수정
+* | |   6ddd574 Merge pull request #13 from On-Premise-Sky/feature/SIUUU1-team-readme
+|\ \ \  
+| * | | df7a869 docs: team/README.md에 팀원 목록 표 기본 구성 추가
+| | |/  
+| |/|   
+* | |   bca7e8c Merge pull request #11 from On-Premise-Sky/docs/SIUUU1-contributing-conflict
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 26deac1 docs: 충돌 해결 시점을 main 병합 기준으로 수정
+| * | 31563ca docs: CONTRIBUTING 충돌 대응 흐름에 분기 시점과 머지 순서 규칙 추가
+|/ /  
+* |   d957779 Merge pull request #5 from On-Premise-Sky/feature/yhana972-pr-preview-rules
+|\ \  
+| |/  
+|/|   
+| * d242532 docs: 리뷰 대화 해결 담당과 병합 조건 명시
+| * 30dfdd6 docs: 브랜치 네이밍과 PR 및 리뷰 규칙 보완
+|/  
+| * 85aeed7 feat: 개인 소개 사이트 추가 및 테마 저장 키 분리
+|/  
+*   75d3fdd Merge pull request #2 from On-Premise-Sky/fix/issue-template-name
+|\  
+| * f72c19f fix: 이슈 템플릿 name이 짧아 인식되지 않던 문제 수정
+|/  
+* a892269 chore: 회의 기록 제거 및 저장소 주소를 Organization으로 변경
+* db529f5 docs: 팀원 4명 기준으로 README, SUBMISSION, 미팅 안건 수정
+* d8b64a1 chore: 초기 파일을 저장소 루트 기준으로 다시 정리
+* 73917c7 chore: 저장소 초기 구조와 협업 문서 초안 추가
