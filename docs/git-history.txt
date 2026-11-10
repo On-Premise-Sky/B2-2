@@ -1,27 +1,53 @@
-* 8f54eaa docs: 브랜치 전략과 CODEOWNERS 운영 방식을 실제 운영에 맞게 수정
-| * 2c07549 docs: README에 GitHub Pages 배포 주소 추가
-|/  
-*   a3a2bff Merge pull request #34 from On-Premise-Sky/feature/sw0410-member-github
+*   abc77d7 Merge pull request #46 from On-Premise-Sky/feature/ktheodoreyw-history-cleanup
 |\  
-| * ffbeb14 docs: 충돌 #4 modify/delete 해결 기록 추가
-| *   7eabc5f Merge remote-tracking branch 'origin/main' into feature/sw0410-member-github
-| |\  
+| * a21a425 docs: 트러블슈팅 시나리오 5(rebase -i 히스토리 정리) 기록 추가
+| * 581170c docs: CONTRIBUTING 히스토리 정리 예시 추가
+| * 32638ff docs: CONTRIBUTING에 히스토리 정리 기준 추가
+|/  
+*   3e668c7 Merge pull request #44 from On-Premise-Sky/docs/ktheodoreyw-amend-redo
+|\  
+| * faf8602 docs: 트러블슈팅 시나리오 1(commit --amend) 기록 추가
+| * 5d8882c docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
+|/  
+*   142854d Merge pull request #41 from On-Premise-Sky/docs/sw0410-contributing-sync
+|\  
+| * 0e63a9e docs: CODEOWNERS 오너 2명 이유에 GitHub 동작임을 명시
+| * b78e644 docs: CODEOWNERS 절의 오너 2명 이유와 승인 수 설명 정정, 리뷰 짝 명시
+| * 8f54eaa docs: 브랜치 전략과 CODEOWNERS 운영 방식을 실제 운영에 맞게 수정
+* |   ae7e502 Merge pull request #39 from On-Premise-Sky/docs/sw0410-pages-url
+|\ \  
+| * | 5eaaa93 docs: 개인 사이트 README의 배포 예정 문구 정리
+| * | 2c07549 docs: README에 GitHub Pages 배포 주소 추가
+| |/  
+* |   e7382c6 Merge pull request #35 from On-Premise-Sky/fix/sw0410-revert-temp-note
+|\ \  
 | |/  
 |/|   
-* |   82e3cfb Merge pull request #30 from On-Premise-Sky/docs/ktheodoreyw-conflict-log
-|\ \  
-| | * e4b6497 fix: GitHub 링크에 hover·포커스 스타일 적용
-| | *   56c2efd fix: members.js 삭제와 GitHub 링크 추가 충돌 해결
-| | |\  
-| | * | 8869a8d feat: 팀원 카드에 GitHub 프로필 링크 추가
-| | | | * ec5bd75 docs: 시나리오 3 제목 복구와 커밋 해시 표기 수정
-| | | | * 38436f4 docs: 트러블슈팅 담당 현황에 시나리오 3 완료 반영
-| | | | *   e2957dc Merge remote-tracking branch 'origin/main' into fix/sw0410-revert-temp-note
-| | | | |\  
-| |_|_|_|/  
-|/| | | |   
-| | | | * a35d585 docs: 트러블슈팅 시나리오 3(git revert) 기록 추가
-| | | | * 431aadb fix: README 임시 메모 되돌리기
+| * ec5bd75 docs: 시나리오 3 제목 복구와 커밋 해시 표기 수정
+| * 38436f4 docs: 트러블슈팅 담당 현황에 시나리오 3 완료 반영
+| *   e2957dc Merge remote-tracking branch 'origin/main' into fix/sw0410-revert-temp-note
+| |\  
+| * | a35d585 docs: 트러블슈팅 시나리오 3(git revert) 기록 추가
+| * | 431aadb fix: README 임시 메모 되돌리기
+| | | * 8fc0758 docs: Git 히스토리 그래프 스크린샷 추가
+| | | * fd7befe docs: Git 히스토리 증빙 추가
+| |_|/  
+|/| |   
+* | |   a3a2bff Merge pull request #34 from On-Premise-Sky/feature/sw0410-member-github
+|\ \ \  
+| * | | ffbeb14 docs: 충돌 #4 modify/delete 해결 기록 추가
+| * | |   7eabc5f Merge remote-tracking branch 'origin/main' into feature/sw0410-member-github
+| |\ \ \  
+| |/ / /  
+|/| | |   
+* | | |   82e3cfb Merge pull request #30 from On-Premise-Sky/docs/ktheodoreyw-conflict-log
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| | * | e4b6497 fix: GitHub 링크에 hover·포커스 스타일 적용
+| | * |   56c2efd fix: members.js 삭제와 GitHub 링크 추가 충돌 해결
+| | |\ \  
+| | * | | 8869a8d feat: 팀원 카드에 GitHub 프로필 링크 추가
 | | | | | * 8dd085f docs: 트러블슈팅 시나리오 1(commit --amend) 기록 추가
 | | | | | * f681928 docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
 | |_|_|_|/| 
