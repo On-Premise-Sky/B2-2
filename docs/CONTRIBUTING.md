@@ -152,3 +152,15 @@ git merge origin/main
 - `update`, `wip`처럼 컨벤션에 맞지 않는 메시지는 `reword`로 고칩니다.
 - 정리 전에 `git branch backup/<브랜치>`로 백업하고, 정리 후 `git diff backup/<브랜치> HEAD` 결과가 비어 있는지 확인합니다(내용은 그대로, 커밋만 정리).
 - 이미 push한 커밋을 정리해야 하면 팀에 먼저 알리고 `git push --force-with-lease`를 사용합니다. `main`에는 하지 않습니다.
+
+### 예시
+
+```text
+pick 1a2b3c4 docs: CONTRIBUTING에 히스토리 정리 기준 추가
+squash 5d6e7f8 오타 수정
+reword 9a0b1c2 update
+```
+
+- 목록은 **오래된 커밋이 위**입니다(`git log`와 반대).
+- `squash`: 바로 위 커밋에 합치고 메시지를 다시 정합니다. `fixup`은 합치되 아래 커밋의 메시지를 버립니다.
+- `reword`: 변경 내용은 그대로 두고 커밋 메시지만 고칩니다.
