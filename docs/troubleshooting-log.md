@@ -6,7 +6,7 @@
 
 | 시나리오 | 명령어 | 담당자 | 상태 |
 | --- | --- | --- | --- |
-| 1. 최근 커밋 메시지 수정 | `git commit --amend` | 김영운 | 진행중 |
+| 1. 최근 커밋 메시지 수정 | `git commit --amend` | 김영운 | 완료 |
 | 2. 로컬 커밋 취소, 변경 유지 | `git reset --soft HEAD~1` | 김나현 | 완료 |
 | 3. push된 커밋 되돌리기 | `git revert <커밋>` | 이승우 | 완료 |
 | 4. 작업 보관 후 전환 | `git stash` / `git stash pop` | 안시우 | 완료 |
@@ -26,13 +26,65 @@
 
 - **작성자 / 역할**: 김영운 / 미션 설계, CONTRIBUTING 총괄
 - **상황**: 앞서 GitHub 웹 편집기의 기본 메시지(`Update docs/conflict-resolution.md`, `a31111d`)가 그대로 main에 머지되어 컨벤션을 어긴 커밋이 남았습니다. 같은 실수를 자기 브랜치에서 의도적으로 재현해(`update`), push 전에 amend로 교정했습니다.
-- **절차**:
+- **절차**: `update` 커밋 후 `git log -1 --format=%p`로 부모가 1개인 일반 커밋임을 확인하고, `git status -sb`로 push 전임을 확인했습니다. amend 전후의 `git log -1`과 `git log --oneline -2` 출력은 파일로 저장해 그대로 옮겼습니다.
 
 ```bash
+git add docs/troubleshooting-log.md
+git commit -m "update"
+git log -1 --format=%p
+git status -sb
+git log -1
+git commit --amend -m "docs: 트러블슈팅 시나리오 1 담당자와 상황 작성"
+git log -1
+git log --oneline -2
 ```
 
-- **결과** (전/후 `git log --oneline`):
-- **주의점**: push한 커밋을 amend하면 강제 push가 필요하므로, 공유 브랜치에서는 하지 않습니다.
+- **결과**: 메시지가 `update`에서 컨벤션 형식으로 바뀌었고, 해시가 `d583dfd` → `5d8882c`로 바뀌었습니다. 부모 커밋(`142854d`)은 그대로입니다.
+
+**push 전 확인** — upstream 표시가 없어 원격에 올라가지 않은 상태입니다.
+
+```text
+## docs/ktheodoreyw-amend-redo
+```
+
+**amend 전 `git log -1`**
+
+```text
+commit d583dfd393ad52196279249629c5f959ab8b4136
+Author: 김영운 <k.theodore.yw@khu.ac.kr>
+Date:   Tue Nov 10 14:05:16 2026 +0900
+
+    update
+```
+
+**amend 후 `git log -1`**
+
+```text
+commit 5d8882c207131e3f74dea08e5dcfa7b0525e637a
+Author: 김영운 <k.theodore.yw@khu.ac.kr>
+Date:   Tue Nov 10 14:05:16 2026 +0900
+
+    docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
+```
+
+**부모 커밋 비교** — 두 출력의 둘째 줄(부모 `142854d`)이 같아 마지막 커밋 하나만 교체되었음을 확인했습니다.
+
+```text
+d583dfd update
+142854d Merge pull request #41 from On-Premise-Sky/docs/sw0410-contributing-sync
+```
+
+```text
+5d8882c docs: 트러블슈팅 시나리오 1 담당자와 상황 작성
+142854d Merge pull request #41 from On-Premise-Sky/docs/sw0410-contributing-sync
+```
+
+- **주의점**:
+  - amend는 마지막 커밋을 새 커밋으로 **교체**하므로 해시가 바뀝니다.
+  - push한 뒤에 amend하면 강제 push가 필요하므로 공유 브랜치에서는 하지 않습니다. 이미 push한 커밋은 `revert`나 후속 커밋으로 바로잡습니다.
+  - GitHub 웹 편집기로 커밋할 때는 기본 메시지(`Update ...`)를 지우고 컨벤션에 맞게 다시 씁니다.
+  - 빠뜨린 파일은 `git add` 후 `git commit --amend --no-edit`로 메시지를 유지한 채 추가할 수 있습니다.
+  - `update` 커밋이 생성되지 않은 상태(`nothing to commit`)에서 amend하면 직전 커밋인 main의 머지 커밋이 교체됩니다([#37](https://github.com/On-Premise-Sky/B2-2/pull/37)). amend 전 `git log -1`에 `Merge:` 줄이 있거나 메시지가 `update`가 아니면 중단합니다.
 
 ## 시나리오 2. `git reset --soft HEAD~1`
 
